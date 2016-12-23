@@ -473,7 +473,7 @@ inline void check_ext_size<4>(std::size_t size) {
 template <typename VisitorHolder>
 inline unpack_return context<VisitorHolder>::execute(const char* data, std::size_t len, std::size_t& off)
 {
-    assert(len >= off);
+//    assert(len >= off);
 
     m_start = data;
     m_current = data + off;
