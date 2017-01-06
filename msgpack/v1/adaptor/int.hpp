@@ -49,6 +49,7 @@ struct convert_integer_sign<T, false> {
             return static_cast<T>(o.via.u64);
         }
         // throw msgpack::type_error();
+        return static_cast<T>(std::numeric_limits<T>::max());
     }
 };
 
