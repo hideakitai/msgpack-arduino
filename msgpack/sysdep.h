@@ -62,8 +62,9 @@
 #   define _msgpack_sync_incr_and_fetch(ptr) __sync_add_and_fetch(ptr, 1)
 #endif
 
-#ifdef _WIN32
+#if defined(_WIN32) || defined(__MBED__) || defined(__AVR__) || defined(TEENSYDUINO)
 
+#ifdef _WIN32
 #   ifdef __cplusplus
     /* numeric_limits<T>::min,max */
 #       ifdef max
@@ -73,6 +74,7 @@
 #           undef min
 #       endif
 #   endif
+#endif
 
 #else /* _*/
 

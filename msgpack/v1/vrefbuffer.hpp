@@ -22,7 +22,7 @@
 #endif
 #endif // defined(_MSC_VER)
 
-#ifndef _WIN32
+#if !defined(_WIN32) && !defined(__MBED__) && !defined(__AVR__) && !defined(TEENSYDUINO)
 #include <sys/uio.h>
 #else
 struct iovec {

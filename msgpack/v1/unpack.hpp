@@ -1404,6 +1404,7 @@ inline msgpack::object_handle unpack(
         // throw msgpack::insufficient_bytes("insufficient bytes");
     case PARSE_PARSE_ERROR:
     default:
+        break;
         // throw msgpack::parse_error("parse error");
     }
     return msgpack::object_handle();
@@ -1465,6 +1466,7 @@ inline void unpack(
         // throw msgpack::insufficient_bytes("insufficient bytes");
     case PARSE_PARSE_ERROR:
     default:
+        break;
         // throw msgpack::parse_error("parse error");
     }
 }
@@ -1524,6 +1526,7 @@ inline msgpack::object unpack(
         // throw msgpack::insufficient_bytes("insufficient bytes");
     case PARSE_PARSE_ERROR:
     default:
+        break;
         // throw msgpack::parse_error("parse error");
     }
     return obj;

@@ -77,6 +77,7 @@ struct convert<type::size_equal_only<T> > {
             // if (o.via.map.size != msgpack::type::size(v.m_t)) throw msgpack::type_error();
             break;
         default:
+            break;
             // throw msgpack::type_error();
         }
         o >> v.m_t;
