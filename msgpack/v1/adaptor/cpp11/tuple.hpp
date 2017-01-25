@@ -109,10 +109,10 @@ struct StdTupleConverter<Tuple, 0> {
 namespace adaptor {
 
 template <typename... Args>
-struct as<std::tuple<Args...>, typename std::enable_if<msgpack::all_of<msgpack::has_as, Args...>::value>::type>  {
+struct as<std::tuple<Args...>, typename std::enable_if<msgpack::any_of<msgpack::has_as, Args...>::value>::type>  {
     std::tuple<Args...> operator()(
         msgpack::object const& o) const {
-        if (o.type != msgpack::type::ARRAY) { throw msgpack::type_error(); }
+        // if (o.type != msgpack::type::ARRAY) { throw msgpack::type_error(); }
         return StdTupleAs<Args...>::as(o);
     }
 };
@@ -122,7 +122,7 @@ struct convert<std::tuple<Args...>> {
     msgpack::object const& operator()(
         msgpack::object const& o,
         std::tuple<Args...>& v) const {
-        if(o.type != msgpack::type::ARRAY) { throw msgpack::type_error(); }
+        // if(o.type != msgpack::type::ARRAY) { throw msgpack::type_error(); }
         StdTupleConverter<decltype(v), sizeof...(Args)>::convert(o, v);
         return o;
     }

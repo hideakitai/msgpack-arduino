@@ -16,6 +16,7 @@
 #include "msgpack/zone.hpp"
 #include "msgpack/cpp_config.hpp"
 #include "msgpack/sysdep.h"
+#include "msgpack/parse_return.hpp"
 
 #include <memory>
 #include <stdexcept>
@@ -39,13 +40,11 @@
 const size_t COUNTER_SIZE = sizeof(_msgpack_atomic_counter_t);
 
 #ifndef MSGPACK_UNPACKER_INIT_BUFFER_SIZE
-// #define MSGPACK_UNPACKER_INIT_BUFFER_SIZE (64*1024)
-#define MSGPACK_UNPACKER_INIT_BUFFER_SIZE (16*64)
+#define MSGPACK_UNPACKER_INIT_BUFFER_SIZE (64*1024)
 #endif
 
 #ifndef MSGPACK_UNPACKER_RESERVE_SIZE
-// #define MSGPACK_UNPACKER_RESERVE_SIZE (32*1024)
-#define MSGPACK_UNPACKER_RESERVE_SIZE (8*64)
+#define MSGPACK_UNPACKER_RESERVE_SIZE (32*1024)
 #endif
 
 
@@ -435,17 +434,9 @@ void unpack(
     unpack_reference_func f = MSGPACK_NULLPTR, void* user_data = MSGPACK_NULLPTR, unpack_limit const& limit = unpack_limit());
 
 
-// for internal use
-typedef enum {
-    UNPACK_SUCCESS              =  2,
-    UNPACK_EXTRA_BYTES          =  1,
-    UNPACK_CONTINUE             =  0,
-    UNPACK_PARSE_ERROR          = -1
-} unpack_return;
-
 namespace detail {
 
-unpack_return
+parse_return
 unpack_imp(const char* data, std::size_t len, std::size_t& off,
            msgpack::zone& result_zone, msgpack::object& result, bool& referenced,
            unpack_reference_func f, void* user_data,

@@ -14,6 +14,11 @@
 
 #include <stdlib.h>
 #include <stddef.h>
+
+#if defined(_MSC_VER) && _MSC_VER <= 1800
+#   define snprintf(buf, len, format,...) _snprintf_s(buf, len, len, format, __VA_ARGS__)
+#endif
+
 #if defined(_MSC_VER) && _MSC_VER < 1600
     typedef signed __int8 int8_t;
     typedef unsigned __int8 uint8_t;
@@ -46,9 +51,9 @@
 #elif defined(__GNUC__) && ((__GNUC__*10 + __GNUC_MINOR__) < 41)
 
 #   if defined(__cplusplus)
-#       define _msgpack_atomic_counter_header "gcc_atomic.hpp"
+#       define _msgpack_atomic_counter_header "msgpack/gcc_atomic.hpp"
 #   else
-#       define _msgpack_atomic_counter_header "gcc_atomic.h"
+#       define _msgpack_atomic_counter_header "msgpack/gcc_atomic.h"
 #   endif
 
 #else
@@ -57,8 +62,7 @@
 #   define _msgpack_sync_incr_and_fetch(ptr) __sync_add_and_fetch(ptr, 1)
 #endif
 
-// #ifdef _WIN32
-#if defined(_WIN32) || defined(__MBED__) || defined(__AVR__) || defined(TEENSYDUINO)
+#ifdef _WIN32
 
 #   ifdef __cplusplus
     /* numeric_limits<T>::min,max */
@@ -81,7 +85,6 @@
 
 #if MSGPACK_ENDIAN_LITTLE_BYTE
 
-// #   ifdef _WIN32
 #if defined(_WIN32) || defined(__MBED__) || defined(__AVR__) || defined(TEENSYDUINO)
 #       if defined(ntohs)
 #       define _msgpack_be16(x) ntohs(x)
@@ -96,7 +99,6 @@
 #        define _msgpack_be16(x) ntohs(x)
 #   endif
 
-// #   ifdef _WIN32
 #if defined(_WIN32) || defined(__MBED__) || defined(__AVR__) || defined(TEENSYDUINO)
 #        if defined(ntohl)
 #            define _msgpack_be32(x) ntohl(x)

@@ -29,7 +29,7 @@ public:
     void write(const char* buf, unsigned int len)
     {
         if (1 != fwrite(buf, len, 1, m_file)) {
-            throw std::runtime_error("fwrite() failed");
+            // throw std::runtime_error("fwrite() failed");
         }
     }
 

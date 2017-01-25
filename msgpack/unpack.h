@@ -66,8 +66,7 @@ typedef struct msgpack_unpacker {
 
 
 #ifndef MSGPACK_UNPACKER_INIT_BUFFER_SIZE
-// #define MSGPACK_UNPACKER_INIT_BUFFER_SIZE (64*1024)
-#define MSGPACK_UNPACKER_INIT_BUFFER_SIZE (16*64)
+#define MSGPACK_UNPACKER_INIT_BUFFER_SIZE (64*1024)
 #endif
 
 /**
@@ -99,8 +98,7 @@ void msgpack_unpacker_free(msgpack_unpacker* mpac);
 
 
 #ifndef MSGPACK_UNPACKER_RESERVE_SIZE
-// #define MSGPACK_UNPACKER_RESERVE_SIZE (32*1024)
-#define MSGPACK_UNPACKER_RESERVE_SIZE (8*64)
+#define MSGPACK_UNPACKER_RESERVE_SIZE (32*1024)
 #endif
 
 /**
@@ -147,6 +145,18 @@ static inline void   msgpack_unpacker_buffer_consumed(msgpack_unpacker* mpac, si
  */
 MSGPACK_DLLEXPORT
 msgpack_unpack_return msgpack_unpacker_next(msgpack_unpacker* mpac, msgpack_unpacked* pac);
+
+/**
+ * Deserializes one object and set the number of parsed bytes involved.
+ * Returns true if it successes. Otherwise false is returned.
+ * @param mpac    pointer to an initialized msgpack_unpacker object.
+ * @param result  pointer to an initialized msgpack_unpacked object.
+ * @param p_bytes pointer to variable that will be set with the number of parsed bytes.
+ */
+MSGPACK_DLLEXPORT
+msgpack_unpack_return msgpack_unpacker_next_with_size(msgpack_unpacker* mpac,
+                                                      msgpack_unpacked* result,
+                                                      size_t *p_bytes);
 
 /**
  * Initializes a msgpack_unpacked object.

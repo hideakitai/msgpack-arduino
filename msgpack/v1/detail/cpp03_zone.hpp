@@ -66,7 +66,7 @@ class zone {
             finalizer* tmp =
                 static_cast<finalizer*>(::realloc(m_array, sizeof(finalizer) * nnext));
             if(!tmp) {
-                throw std::bad_alloc();
+                // throw std::bad_alloc();
             }
             m_array     = tmp;
             m_end   = tmp + nnext;
@@ -87,7 +87,7 @@ class zone {
         {
             chunk* c = static_cast<chunk*>(::malloc(sizeof(chunk) + chunk_size));
             if(!c) {
-                throw std::bad_alloc();
+                // throw std::bad_alloc();
             }
 
             m_head = c;
@@ -147,7 +147,7 @@ public:
     static void* operator new(std::size_t size)
     {
         void* p = ::malloc(size);
-        if (!p) throw std::bad_alloc();
+        // if (!p) throw std::bad_alloc();
         return p;
     }
     static void operator delete(void *p) /* throw() */
@@ -163,55 +163,55 @@ public:
         ::operator delete(p, place);
     }
     /// @cond
-    
+
     template <typename T>
     T* allocate();
-    
+
     template <typename T, typename A1>
     T* allocate(A1 a1);
-    
+
     template <typename T, typename A1, typename A2>
     T* allocate(A1 a1, A2 a2);
-    
+
     template <typename T, typename A1, typename A2, typename A3>
     T* allocate(A1 a1, A2 a2, A3 a3);
-    
+
     template <typename T, typename A1, typename A2, typename A3, typename A4>
     T* allocate(A1 a1, A2 a2, A3 a3, A4 a4);
-    
+
     template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5>
     T* allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5);
-    
+
     template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6>
     T* allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6);
-    
+
     template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7>
     T* allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7);
-    
+
     template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8>
     T* allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8);
-    
+
     template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9>
     T* allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9);
-    
+
     template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10>
     T* allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10);
-    
+
     template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11>
     T* allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11);
-    
+
     template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11, typename A12>
     T* allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12);
-    
+
     template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11, typename A12, typename A13>
     T* allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13);
-    
+
     template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11, typename A12, typename A13, typename A14>
     T* allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14);
-    
+
     template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11, typename A12, typename A13, typename A14, typename A15>
     T* allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15);
-    
+
     /// @endcond
 
 private:
@@ -279,7 +279,7 @@ inline void* zone::allocate_expand(size_t size)
     }
 
     chunk* c = static_cast<chunk*>(::malloc(sizeof(chunk) + sz));
-    if (!c) throw std::bad_alloc();
+    // if (!c) throw std::bad_alloc();
 
     char* ptr = reinterpret_cast<char*>(c) + sizeof(chunk);
 
@@ -346,304 +346,304 @@ template <typename T>
 T* zone::allocate()
 {
     void* x = allocate_align(sizeof(T));
-    try {
+    // try {
         m_finalizer_array.push(&zone::object_destruct<T>, x);
-    } catch (...) {
-        undo_allocate(sizeof(T));
-        throw;
-    }
-    try {
+    // } catch (...) {
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
+    // try {
         return new (x) T();
-    } catch (...) {
-        --m_finalizer_array.m_tail;
-        undo_allocate(sizeof(T));
-        throw;
-    }
+    // } catch (...) {
+    //     --m_finalizer_array.m_tail;
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
 }
 
 template <typename T, typename A1>
 T* zone::allocate(A1 a1)
 {
     void* x = allocate_align(sizeof(T));
-    try {
+    // try {
         m_finalizer_array.push(&zone::object_destruct<T>, x);
-    } catch (...) {
-        undo_allocate(sizeof(T));
-        throw;
-    }
-    try {
+    // } catch (...) {
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
+    // try {
         return new (x) T(a1);
-    } catch (...) {
-        --m_finalizer_array.m_tail;
-        undo_allocate(sizeof(T));
-        throw;
-    }
+    // } catch (...) {
+    //     --m_finalizer_array.m_tail;
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
 }
 
 template <typename T, typename A1, typename A2>
 T* zone::allocate(A1 a1, A2 a2)
 {
     void* x = allocate_align(sizeof(T));
-    try {
+    // try {
         m_finalizer_array.push(&zone::object_destruct<T>, x);
-    } catch (...) {
-        undo_allocate(sizeof(T));
-        throw;
-    }
-    try {
+    // } catch (...) {
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
+    // try {
         return new (x) T(a1, a2);
-    } catch (...) {
-        --m_finalizer_array.m_tail;
-        undo_allocate(sizeof(T));
-        throw;
-    }
+    // } catch (...) {
+    //     --m_finalizer_array.m_tail;
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
 }
 
 template <typename T, typename A1, typename A2, typename A3>
 T* zone::allocate(A1 a1, A2 a2, A3 a3)
 {
     void* x = allocate_align(sizeof(T));
-    try {
+    // try {
         m_finalizer_array.push(&zone::object_destruct<T>, x);
-    } catch (...) {
-        undo_allocate(sizeof(T));
-        throw;
-    }
-    try {
+    // } catch (...) {
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
+    // try {
         return new (x) T(a1, a2, a3);
-    } catch (...) {
-        --m_finalizer_array.m_tail;
-        undo_allocate(sizeof(T));
-        throw;
-    }
+    // } catch (...) {
+    //     --m_finalizer_array.m_tail;
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
 }
 
 template <typename T, typename A1, typename A2, typename A3, typename A4>
 T* zone::allocate(A1 a1, A2 a2, A3 a3, A4 a4)
 {
     void* x = allocate_align(sizeof(T));
-    try {
+    // try {
         m_finalizer_array.push(&zone::object_destruct<T>, x);
-    } catch (...) {
-        undo_allocate(sizeof(T));
-        throw;
-    }
-    try {
+    // } catch (...) {
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
+    // try {
         return new (x) T(a1, a2, a3, a4);
-    } catch (...) {
-        --m_finalizer_array.m_tail;
-        undo_allocate(sizeof(T));
-        throw;
-    }
+    // } catch (...) {
+    //     --m_finalizer_array.m_tail;
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
 }
 
 template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5>
 T* zone::allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5)
 {
     void* x = allocate_align(sizeof(T));
-    try {
+    // try {
         m_finalizer_array.push(&zone::object_destruct<T>, x);
-    } catch (...) {
-        undo_allocate(sizeof(T));
-        throw;
-    }
-    try {
+    // } catch (...) {
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
+    // try {
         return new (x) T(a1, a2, a3, a4, a5);
-    } catch (...) {
-        --m_finalizer_array.m_tail;
-        undo_allocate(sizeof(T));
-        throw;
-    }
+    // } catch (...) {
+    //     --m_finalizer_array.m_tail;
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
 }
 
 template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6>
 T* zone::allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6)
 {
     void* x = allocate_align(sizeof(T));
-    try {
+    // try {
         m_finalizer_array.push(&zone::object_destruct<T>, x);
-    } catch (...) {
-        undo_allocate(sizeof(T));
-        throw;
-    }
-    try {
+    // } catch (...) {
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
+    // try {
         return new (x) T(a1, a2, a3, a4, a5, a6);
-    } catch (...) {
-        --m_finalizer_array.m_tail;
-        undo_allocate(sizeof(T));
-        throw;
-    }
+    // } catch (...) {
+    //     --m_finalizer_array.m_tail;
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
 }
 
 template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7>
 T* zone::allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7)
 {
     void* x = allocate_align(sizeof(T));
-    try {
+    // try {
         m_finalizer_array.push(&zone::object_destruct<T>, x);
-    } catch (...) {
-        undo_allocate(sizeof(T));
-        throw;
-    }
-    try {
+    // } catch (...) {
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
+    // try {
         return new (x) T(a1, a2, a3, a4, a5, a6, a7);
-    } catch (...) {
-        --m_finalizer_array.m_tail;
-        undo_allocate(sizeof(T));
-        throw;
-    }
+    // } catch (...) {
+    //     --m_finalizer_array.m_tail;
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
 }
 
 template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8>
 T* zone::allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8)
 {
     void* x = allocate_align(sizeof(T));
-    try {
+    // try {
         m_finalizer_array.push(&zone::object_destruct<T>, x);
-    } catch (...) {
-        undo_allocate(sizeof(T));
-        throw;
-    }
-    try {
+    // } catch (...) {
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
+    // try {
         return new (x) T(a1, a2, a3, a4, a5, a6, a7, a8);
-    } catch (...) {
-        --m_finalizer_array.m_tail;
-        undo_allocate(sizeof(T));
-        throw;
-    }
+    // } catch (...) {
+    //     --m_finalizer_array.m_tail;
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
 }
 
 template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9>
 T* zone::allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9)
 {
     void* x = allocate_align(sizeof(T));
-    try {
+    // try {
         m_finalizer_array.push(&zone::object_destruct<T>, x);
-    } catch (...) {
-        undo_allocate(sizeof(T));
-        throw;
-    }
-    try {
+    // } catch (...) {
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
+    // try {
         return new (x) T(a1, a2, a3, a4, a5, a6, a7, a8, a9);
-    } catch (...) {
-        --m_finalizer_array.m_tail;
-        undo_allocate(sizeof(T));
-        throw;
-    }
+    // } catch (...) {
+    //     --m_finalizer_array.m_tail;
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
 }
 
 template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10>
 T* zone::allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10)
 {
     void* x = allocate_align(sizeof(T));
-    try {
+    // try {
         m_finalizer_array.push(&zone::object_destruct<T>, x);
-    } catch (...) {
-        undo_allocate(sizeof(T));
-        throw;
-    }
-    try {
+    // } catch (...) {
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
+    // try {
         return new (x) T(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10);
-    } catch (...) {
-        --m_finalizer_array.m_tail;
-        undo_allocate(sizeof(T));
-        throw;
-    }
+    // } catch (...) {
+    //     --m_finalizer_array.m_tail;
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
 }
 
 template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11>
 T* zone::allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11)
 {
     void* x = allocate_align(sizeof(T));
-    try {
+    // try {
         m_finalizer_array.push(&zone::object_destruct<T>, x);
-    } catch (...) {
-        undo_allocate(sizeof(T));
-        throw;
-    }
-    try {
+    // } catch (...) {
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
+    // try {
         return new (x) T(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11);
-    } catch (...) {
-        --m_finalizer_array.m_tail;
-        undo_allocate(sizeof(T));
-        throw;
-    }
+    // } catch (...) {
+    //     --m_finalizer_array.m_tail;
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
 }
 
 template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11, typename A12>
 T* zone::allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12)
 {
     void* x = allocate_align(sizeof(T));
-    try {
+    // try {
         m_finalizer_array.push(&zone::object_destruct<T>, x);
-    } catch (...) {
-        undo_allocate(sizeof(T));
-        throw;
-    }
-    try {
+    // } catch (...) {
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
+    // try {
         return new (x) T(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12);
-    } catch (...) {
-        --m_finalizer_array.m_tail;
-        undo_allocate(sizeof(T));
-        throw;
-    }
+    // } catch (...) {
+    //     --m_finalizer_array.m_tail;
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
 }
 
 template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11, typename A12, typename A13>
 T* zone::allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13)
 {
     void* x = allocate_align(sizeof(T));
-    try {
+    // try {
         m_finalizer_array.push(&zone::object_destruct<T>, x);
-    } catch (...) {
-        undo_allocate(sizeof(T));
-        throw;
-    }
-    try {
+    // } catch (...) {
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
+    // try {
         return new (x) T(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13);
-    } catch (...) {
-        --m_finalizer_array.m_tail;
-        undo_allocate(sizeof(T));
-        throw;
-    }
+    // } catch (...) {
+    //     --m_finalizer_array.m_tail;
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
 }
 
 template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11, typename A12, typename A13, typename A14>
 T* zone::allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14)
 {
     void* x = allocate_align(sizeof(T));
-    try {
+    // try {
         m_finalizer_array.push(&zone::object_destruct<T>, x);
-    } catch (...) {
-        undo_allocate(sizeof(T));
-        throw;
-    }
-    try {
+    // } catch (...) {
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
+    // try {
         return new (x) T(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14);
-    } catch (...) {
-        --m_finalizer_array.m_tail;
-        undo_allocate(sizeof(T));
-        throw;
-    }
+    // } catch (...) {
+    //     --m_finalizer_array.m_tail;
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
 }
 
 template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11, typename A12, typename A13, typename A14, typename A15>
 T* zone::allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15)
 {
     void* x = allocate_align(sizeof(T));
-    try {
+    // try {
         m_finalizer_array.push(&zone::object_destruct<T>, x);
-    } catch (...) {
-        undo_allocate(sizeof(T));
-        throw;
-    }
-    try {
+    // } catch (...) {
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
+    // try {
         return new (x) T(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15);
-    } catch (...) {
-        --m_finalizer_array.m_tail;
-        undo_allocate(sizeof(T));
-        throw;
-    }
+    // } catch (...) {
+    //     --m_finalizer_array.m_tail;
+    //     undo_allocate(sizeof(T));
+    //     // throw;
+    // }
 }
 
 /// @endcond

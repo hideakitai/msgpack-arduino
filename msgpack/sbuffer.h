@@ -53,8 +53,7 @@ static inline void msgpack_sbuffer_free(msgpack_sbuffer* sbuf)
 }
 
 #ifndef MSGPACK_SBUFFER_INIT_SIZE
-// #define MSGPACK_SBUFFER_INIT_SIZE 8192
-#define MSGPACK_SBUFFER_INIT_SIZE 512
+#define MSGPACK_SBUFFER_INIT_SIZE 8192
 #endif
 
 static inline int msgpack_sbuffer_write(void* data, const char* buf, size_t len)

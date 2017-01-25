@@ -33,7 +33,7 @@ public:
         m_stream.next_out = Z_NULL;
         m_stream.avail_out = 0;
         if(deflateInit(&m_stream, level) != Z_OK) {
-            throw std::bad_alloc();
+            // throw std::bad_alloc();
         }
     }
 
@@ -52,12 +52,12 @@ public:
         while(m_stream.avail_in > 0) {
             if(m_stream.avail_out < MSGPACK_ZBUFFER_RESERVE_SIZE) {
                 if(!expand()) {
-                    throw std::bad_alloc();
+                    // throw std::bad_alloc();
                 }
             }
 
             if(deflate(&m_stream, Z_NO_FLUSH) != Z_OK) {
-                throw std::bad_alloc();
+                // throw std::bad_alloc();
             }
         }
     }
@@ -70,11 +70,11 @@ public:
                 return m_data;
             case Z_OK:
                 if(!expand()) {
-                    throw std::bad_alloc();
+                    // throw std::bad_alloc();
                 }
                 break;
             default:
-                throw std::bad_alloc();
+                // throw std::bad_alloc();
             }
         }
     }
@@ -97,7 +97,7 @@ public:
     void reset()
     {
         if(deflateReset(&m_stream) != Z_OK) {
-            throw std::bad_alloc();
+            // throw std::bad_alloc();
         }
         reset_buffer();
     }

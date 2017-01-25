@@ -13,8 +13,7 @@
 #include "zone.h"
 #include <stdlib.h>
 
-// #ifndef _WIN32
-#if !defined(_WIN32) && !defined(__MBED__) && !defined(__AVR__) && !defined(TEENSYDUINO)
+#ifndef _WIN32
 #include <sys/uio.h>
 #else
 struct iovec {
@@ -56,13 +55,11 @@ typedef struct msgpack_vrefbuffer {
 
 
 #ifndef MSGPACK_VREFBUFFER_REF_SIZE
-// #define MSGPACK_VREFBUFFER_REF_SIZE 32
-#define MSGPACK_VREFBUFFER_REF_SIZE 8
+#define MSGPACK_VREFBUFFER_REF_SIZE 32
 #endif
 
 #ifndef MSGPACK_VREFBUFFER_CHUNK_SIZE
-// #define MSGPACK_VREFBUFFER_CHUNK_SIZE 8192
-#define MSGPACK_VREFBUFFER_CHUNK_SIZE 512
+#define MSGPACK_VREFBUFFER_CHUNK_SIZE 8192
 #endif
 
 MSGPACK_DLLEXPORT
@@ -141,3 +138,4 @@ static inline size_t msgpack_vrefbuffer_veclen(const msgpack_vrefbuffer* vref)
 #endif
 
 #endif /* msgpack/vrefbuffer.h */
+

@@ -17,8 +17,7 @@
 #include "msgpack/versioning.hpp"
 
 #ifndef MSGPACK_ZONE_CHUNK_SIZE
-// #define MSGPACK_ZONE_CHUNK_SIZE 8192
-#define MSGPACK_ZONE_CHUNK_SIZE 512
+#define MSGPACK_ZONE_CHUNK_SIZE 8192
 #endif
 
 #ifndef MSGPACK_ZONE_ALIGN

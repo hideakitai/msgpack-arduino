@@ -13,8 +13,7 @@
 #include "msgpack/versioning.hpp"
 
 #ifndef MSGPACK_SBUFFER_INIT_SIZE
-// #define MSGPACK_SBUFFER_INIT_SIZE 8192
-#define MSGPACK_SBUFFER_INIT_SIZE 512
+#define MSGPACK_SBUFFER_INIT_SIZE 8192
 #endif
 
 namespace msgpack {

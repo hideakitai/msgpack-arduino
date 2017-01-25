@@ -60,7 +60,6 @@ public:
     ) :
         m_obj(obj), m_zone(msgpack::move(z)) { }
 
-    // obsolete
     void set(msgpack::object const& obj)
         { m_obj = obj; }
 
@@ -257,7 +256,11 @@ struct pack<msgpack::object> {
             o.pack_int64(v.via.i64);
             return o;
 
-        case msgpack::type::FLOAT:
+        case msgpack::type::FLOAT32:
+            o.pack_float(static_cast<float>(v.via.f64));
+            return o;
+
+        case msgpack::type::FLOAT64:
             o.pack_double(v.via.f64);
             return o;
 
@@ -296,7 +299,7 @@ struct pack<msgpack::object> {
             return o;
 
         default:
-            ;// throw msgpack::type_error();
+            // throw msgpack::type_error();
         }
     }
 };
@@ -311,7 +314,8 @@ struct object_with_zone<msgpack::object> {
         case msgpack::type::BOOLEAN:
         case msgpack::type::POSITIVE_INTEGER:
         case msgpack::type::NEGATIVE_INTEGER:
-        case msgpack::type::FLOAT:
+        case msgpack::type::FLOAT32:
+        case msgpack::type::FLOAT64:
             std::memcpy(&o.via, &v.via, sizeof(v.via));
             return;
 
@@ -368,7 +372,7 @@ struct object_with_zone<msgpack::object> {
             return;
 
         default:
-            ;// throw msgpack::type_error();
+            // throw msgpack::type_error();
         }
 
     }
@@ -395,7 +399,6 @@ class define : public Type {
 public:
     typedef Type msgpack_type;
     typedef define<Type> define_type;
-
     define() {}
     define(const msgpack_type& v) : msgpack_type(v) {}
 
@@ -438,7 +441,8 @@ inline bool operator==(const msgpack::object& x, const msgpack::object& y)
     case msgpack::type::NEGATIVE_INTEGER:
         return x.via.i64 == y.via.i64;
 
-    case msgpack::type::FLOAT:
+    case msgpack::type::FLOAT32:
+    case msgpack::type::FLOAT64:
         return x.via.f64 == y.via.f64;
 
     case msgpack::type::STR:
@@ -498,10 +502,12 @@ inline bool operator==(const msgpack::object& x, const msgpack::object& y)
 
 template <typename T>
 inline bool operator==(const msgpack::object& x, const T& y)
-try {
+{
+// try {
     return x == msgpack::object(y);
-} catch (msgpack::type_error&) {
-    return false;
+// } catch (msgpack::type_error&) {
+//     return false;
+// }
 }
 
 inline bool operator!=(const msgpack::object& x, const msgpack::object& y)
@@ -698,7 +704,11 @@ inline msgpack::packer<Stream>& operator<< (msgpack::packer<Stream>& o, const ms
         o.pack_int64(v.via.i64);
         return o;
 
-    case msgpack::type::FLOAT:
+    case msgpack::type::FLOAT32:
+        o.pack_float(v.via.f64);
+        return o;
+
+    case msgpack::type::FLOAT64:
         o.pack_double(v.via.f64);
         return o;
 
@@ -737,7 +747,7 @@ inline msgpack::packer<Stream>& operator<< (msgpack::packer<Stream>& o, const ms
         return o;
 
     default:
-        ;// throw msgpack::type_error();
+        // throw msgpack::type_error();
     }
 }
 
@@ -766,7 +776,8 @@ inline std::ostream& operator<< (std::ostream& s, const msgpack::object& o)
         s << o.via.i64;
         break;
 
-    case msgpack::type::FLOAT:
+    case msgpack::type::FLOAT32:
+    case msgpack::type::FLOAT64:
         s << o.via.f64;
         break;
 
@@ -802,7 +813,9 @@ inline std::ostream& operator<< (std::ostream& s, const msgpack::object& o)
             default: {
                 unsigned int code = static_cast<unsigned int>(c);
                 if (code < 0x20 || code == 0x7f) {
+                    std::ios::fmtflags flags(s.flags());
                     s << "\\u" << std::hex << std::setw(4) << std::setfill('0') << (code & 0xff);
+                    s.flags(flags);
                 }
                 else {
                     s << c;
