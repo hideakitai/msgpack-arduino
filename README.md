@@ -3,7 +3,8 @@ msgpack-c/c++ for arduino
 
 ## Limitation
 
-- exception is disabled
+- currentlly this library can only be built with [PlatformIO](http://platformio.org/).
+- exception (```try```, ```catch```, ```throw```) is disabled
 
 ## Platforms
 
