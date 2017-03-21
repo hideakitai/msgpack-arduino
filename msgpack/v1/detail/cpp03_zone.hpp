@@ -163,55 +163,55 @@ public:
         ::operator delete(p, place);
     }
     /// @cond
-
+    
     template <typename T>
     T* allocate();
-
+    
     template <typename T, typename A1>
     T* allocate(A1 a1);
-
+    
     template <typename T, typename A1, typename A2>
     T* allocate(A1 a1, A2 a2);
-
+    
     template <typename T, typename A1, typename A2, typename A3>
     T* allocate(A1 a1, A2 a2, A3 a3);
-
+    
     template <typename T, typename A1, typename A2, typename A3, typename A4>
     T* allocate(A1 a1, A2 a2, A3 a3, A4 a4);
-
+    
     template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5>
     T* allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5);
-
+    
     template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6>
     T* allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6);
-
+    
     template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7>
     T* allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7);
-
+    
     template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8>
     T* allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8);
-
+    
     template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9>
     T* allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9);
-
+    
     template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10>
     T* allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10);
-
+    
     template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11>
     T* allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11);
-
+    
     template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11, typename A12>
     T* allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12);
-
+    
     template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11, typename A12, typename A13>
     T* allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13);
-
+    
     template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11, typename A12, typename A13, typename A14>
     T* allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14);
-
+    
     template <typename T, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11, typename A12, typename A13, typename A14, typename A15>
     T* allocate(A1 a1, A2 a2, A3 a3, A4 a4, A5 a5, A6 a6, A7 a7, A8 a8, A9 a9, A10 a10, A11 a11, A12 a12, A13 a13, A14 a14, A15 a15);
-
+    
     /// @endcond
 
 private:

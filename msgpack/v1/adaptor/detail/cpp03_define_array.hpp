@@ -55,7 +55,7 @@ struct define_array<A0> {
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(1);
-
+        
         pk.pack(a0);
     }
     void msgpack_unpack(msgpack::object const& o)
@@ -75,10 +75,10 @@ struct define_array<A0> {
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*1));
         o->via.array.size = 1;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
     }
-
+    
     A0& a0;
 };
 
@@ -92,7 +92,7 @@ struct define_array<A0, A1> {
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(2);
-
+        
         pk.pack(a0);
         pk.pack(a1);
     }
@@ -114,11 +114,11 @@ struct define_array<A0, A1> {
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*2));
         o->via.array.size = 2;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
     }
-
+    
     A0& a0;
     A1& a1;
 };
@@ -133,7 +133,7 @@ struct define_array<A0, A1, A2> {
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(3);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -157,12 +157,12 @@ struct define_array<A0, A1, A2> {
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*3));
         o->via.array.size = 3;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -178,7 +178,7 @@ struct define_array<A0, A1, A2, A3> {
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(4);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -204,13 +204,13 @@ struct define_array<A0, A1, A2, A3> {
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*4));
         o->via.array.size = 4;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
         o->via.array.ptr[3] = msgpack::object(a3, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -227,7 +227,7 @@ struct define_array<A0, A1, A2, A3, A4> {
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(5);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -255,14 +255,14 @@ struct define_array<A0, A1, A2, A3, A4> {
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*5));
         o->via.array.size = 5;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
         o->via.array.ptr[3] = msgpack::object(a3, z);
         o->via.array.ptr[4] = msgpack::object(a4, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -280,7 +280,7 @@ struct define_array<A0, A1, A2, A3, A4, A5> {
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(6);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -310,7 +310,7 @@ struct define_array<A0, A1, A2, A3, A4, A5> {
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*6));
         o->via.array.size = 6;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -318,7 +318,7 @@ struct define_array<A0, A1, A2, A3, A4, A5> {
         o->via.array.ptr[4] = msgpack::object(a4, z);
         o->via.array.ptr[5] = msgpack::object(a5, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -337,7 +337,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6> {
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(7);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -369,7 +369,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6> {
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*7));
         o->via.array.size = 7;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -398,7 +398,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7> {
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(8);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -432,7 +432,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7> {
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*8));
         o->via.array.size = 8;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -442,7 +442,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7> {
         o->via.array.ptr[6] = msgpack::object(a6, z);
         o->via.array.ptr[7] = msgpack::object(a7, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -463,7 +463,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8> {
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(9);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -499,7 +499,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8> {
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*9));
         o->via.array.size = 9;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -510,7 +510,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8> {
         o->via.array.ptr[7] = msgpack::object(a7, z);
         o->via.array.ptr[8] = msgpack::object(a8, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -532,7 +532,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9> {
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(10);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -570,7 +570,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9> {
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*10));
         o->via.array.size = 10;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -582,7 +582,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9> {
         o->via.array.ptr[8] = msgpack::object(a8, z);
         o->via.array.ptr[9] = msgpack::object(a9, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -605,7 +605,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10> {
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(11);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -645,7 +645,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10> {
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*11));
         o->via.array.size = 11;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -658,7 +658,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10> {
         o->via.array.ptr[9] = msgpack::object(a9, z);
         o->via.array.ptr[10] = msgpack::object(a10, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -682,7 +682,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11> {
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(12);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -724,7 +724,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11> {
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*12));
         o->via.array.size = 12;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -738,7 +738,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11> {
         o->via.array.ptr[10] = msgpack::object(a10, z);
         o->via.array.ptr[11] = msgpack::object(a11, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -763,7 +763,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12> {
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(13);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -807,7 +807,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12> {
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*13));
         o->via.array.size = 13;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -822,7 +822,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12> {
         o->via.array.ptr[11] = msgpack::object(a11, z);
         o->via.array.ptr[12] = msgpack::object(a12, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -848,7 +848,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13> 
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(14);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -894,7 +894,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13> 
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*14));
         o->via.array.size = 14;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -910,7 +910,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13> 
         o->via.array.ptr[12] = msgpack::object(a12, z);
         o->via.array.ptr[13] = msgpack::object(a13, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -937,7 +937,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(15);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -985,7 +985,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*15));
         o->via.array.size = 15;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -1002,7 +1002,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->via.array.ptr[13] = msgpack::object(a13, z);
         o->via.array.ptr[14] = msgpack::object(a14, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -1030,7 +1030,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(16);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -1080,7 +1080,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*16));
         o->via.array.size = 16;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -1098,7 +1098,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->via.array.ptr[14] = msgpack::object(a14, z);
         o->via.array.ptr[15] = msgpack::object(a15, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -1127,7 +1127,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(17);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -1179,7 +1179,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*17));
         o->via.array.size = 17;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -1198,7 +1198,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->via.array.ptr[15] = msgpack::object(a15, z);
         o->via.array.ptr[16] = msgpack::object(a16, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -1228,7 +1228,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(18);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -1282,7 +1282,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*18));
         o->via.array.size = 18;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -1302,7 +1302,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->via.array.ptr[16] = msgpack::object(a16, z);
         o->via.array.ptr[17] = msgpack::object(a17, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -1333,7 +1333,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(19);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -1389,7 +1389,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*19));
         o->via.array.size = 19;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -1410,7 +1410,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->via.array.ptr[17] = msgpack::object(a17, z);
         o->via.array.ptr[18] = msgpack::object(a18, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -1442,7 +1442,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(20);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -1500,7 +1500,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*20));
         o->via.array.size = 20;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -1522,7 +1522,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->via.array.ptr[18] = msgpack::object(a18, z);
         o->via.array.ptr[19] = msgpack::object(a19, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -1555,7 +1555,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(21);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -1615,7 +1615,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*21));
         o->via.array.size = 21;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -1638,7 +1638,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->via.array.ptr[19] = msgpack::object(a19, z);
         o->via.array.ptr[20] = msgpack::object(a20, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -1672,7 +1672,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(22);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -1734,7 +1734,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*22));
         o->via.array.size = 22;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -1758,7 +1758,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->via.array.ptr[20] = msgpack::object(a20, z);
         o->via.array.ptr[21] = msgpack::object(a21, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -1793,7 +1793,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(23);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -1857,7 +1857,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*23));
         o->via.array.size = 23;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -1882,7 +1882,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->via.array.ptr[21] = msgpack::object(a21, z);
         o->via.array.ptr[22] = msgpack::object(a22, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -1918,7 +1918,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(24);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -1984,7 +1984,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*24));
         o->via.array.size = 24;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -2010,7 +2010,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->via.array.ptr[22] = msgpack::object(a22, z);
         o->via.array.ptr[23] = msgpack::object(a23, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -2047,7 +2047,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(25);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -2115,7 +2115,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*25));
         o->via.array.size = 25;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -2142,7 +2142,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->via.array.ptr[23] = msgpack::object(a23, z);
         o->via.array.ptr[24] = msgpack::object(a24, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -2180,7 +2180,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(26);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -2250,7 +2250,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*26));
         o->via.array.size = 26;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -2278,7 +2278,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->via.array.ptr[24] = msgpack::object(a24, z);
         o->via.array.ptr[25] = msgpack::object(a25, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -2317,7 +2317,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(27);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -2389,7 +2389,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*27));
         o->via.array.size = 27;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -2418,7 +2418,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->via.array.ptr[25] = msgpack::object(a25, z);
         o->via.array.ptr[26] = msgpack::object(a26, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -2458,7 +2458,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(28);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -2532,7 +2532,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*28));
         o->via.array.size = 28;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -2562,7 +2562,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->via.array.ptr[26] = msgpack::object(a26, z);
         o->via.array.ptr[27] = msgpack::object(a27, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -2603,7 +2603,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(29);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -2679,7 +2679,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*29));
         o->via.array.size = 29;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -2710,7 +2710,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->via.array.ptr[27] = msgpack::object(a27, z);
         o->via.array.ptr[28] = msgpack::object(a28, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -2752,7 +2752,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(30);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -2830,7 +2830,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*30));
         o->via.array.size = 30;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -2862,7 +2862,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->via.array.ptr[28] = msgpack::object(a28, z);
         o->via.array.ptr[29] = msgpack::object(a29, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -2905,7 +2905,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(31);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -2985,7 +2985,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*31));
         o->via.array.size = 31;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -3018,7 +3018,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->via.array.ptr[29] = msgpack::object(a29, z);
         o->via.array.ptr[30] = msgpack::object(a30, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;
@@ -3062,7 +3062,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
     void msgpack_pack(Packer& pk) const
     {
         pk.pack_array(32);
-
+        
         pk.pack(a0);
         pk.pack(a1);
         pk.pack(a2);
@@ -3144,7 +3144,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->type = msgpack::type::ARRAY;
         o->via.array.ptr = static_cast<msgpack::object*>(z.allocate_align(sizeof(msgpack::object)*32));
         o->via.array.size = 32;
-
+        
         o->via.array.ptr[0] = msgpack::object(a0, z);
         o->via.array.ptr[1] = msgpack::object(a1, z);
         o->via.array.ptr[2] = msgpack::object(a2, z);
@@ -3178,7 +3178,7 @@ struct define_array<A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, 
         o->via.array.ptr[30] = msgpack::object(a30, z);
         o->via.array.ptr[31] = msgpack::object(a31, z);
     }
-
+    
     A0& a0;
     A1& a1;
     A2& a2;

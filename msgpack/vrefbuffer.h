@@ -138,3 +138,4 @@ static inline size_t msgpack_vrefbuffer_veclen(const msgpack_vrefbuffer* vref)
 #endif
 
 #endif /* msgpack/vrefbuffer.h */
+
