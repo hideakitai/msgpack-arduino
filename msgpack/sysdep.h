@@ -45,6 +45,9 @@
 
 #ifdef _WIN32
 #   define _msgpack_atomic_counter_header <windows.h>
+#   if !defined(WIN32_LEAN_AND_MEAN)
+#       define WIN32_LEAN_AND_MEAN
+#   endif /* WIN32_LEAN_AND_MEAN */
     typedef long _msgpack_atomic_counter_t;
 #   define _msgpack_sync_decr_and_fetch(ptr) InterlockedDecrement(ptr)
 #   define _msgpack_sync_incr_and_fetch(ptr) InterlockedIncrement(ptr)
@@ -74,7 +77,7 @@
 #       endif
 #   endif
 
-#else /* _*/
+#elif defined(unix) || defined(__unix) || defined(__APPLE__) || defined(__OpenBSD__)
 
 #include <arpa/inet.h>  /* __BYTE_ORDER */
 #   if defined(linux)

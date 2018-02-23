@@ -46,7 +46,7 @@ namespace adaptor {
 template <typename T, typename Hash, typename Compare, typename Alloc>
 struct convert<MSGPACK_STD_TR1::unordered_set<T, Hash, Compare, Alloc> > {
     msgpack::object const& operator()(msgpack::object const& o, MSGPACK_STD_TR1::unordered_set<T, Hash, Compare, Alloc>& v) const {
-        // if(o.type != msgpack::type::ARRAY) { throw msgpack::type_error(); }
+        if(o.type != msgpack::type::ARRAY) { throw msgpack::type_error(); }
         msgpack::object* p = o.via.array.ptr + o.via.array.size;
         msgpack::object* const pbegin = o.via.array.ptr;
         MSGPACK_STD_TR1::unordered_set<T, Hash, Compare, Alloc> tmp;
@@ -82,7 +82,7 @@ struct object_with_zone<MSGPACK_STD_TR1::unordered_set<T, Hash, Compare, Alloc> 
             o.via.array.size = 0;
         } else {
             uint32_t size = checked_get_container_size(v.size());
-            msgpack::object* p = static_cast<msgpack::object*>(o.zone.allocate_align(sizeof(msgpack::object)*size));
+            msgpack::object* p = static_cast<msgpack::object*>(o.zone.allocate_align(sizeof(msgpack::object)*size, MSGPACK_ZONE_ALIGNOF(msgpack::object)));
             msgpack::object* const pend = p + size;
             o.via.array.ptr = p;
             o.via.array.size = size;
@@ -100,7 +100,7 @@ struct object_with_zone<MSGPACK_STD_TR1::unordered_set<T, Hash, Compare, Alloc> 
 template <typename T, typename Hash, typename Compare, typename Alloc>
 struct convert<MSGPACK_STD_TR1::unordered_multiset<T, Hash, Compare, Alloc> > {
     msgpack::object const& operator()(msgpack::object const& o, MSGPACK_STD_TR1::unordered_multiset<T, Hash, Compare, Alloc>& v) const {
-        // if(o.type != msgpack::type::ARRAY) { throw msgpack::type_error(); }
+        if(o.type != msgpack::type::ARRAY) { throw msgpack::type_error(); }
         msgpack::object* p = o.via.array.ptr + o.via.array.size;
         msgpack::object* const pbegin = o.via.array.ptr;
         MSGPACK_STD_TR1::unordered_multiset<T, Hash, Compare, Alloc> tmp;
@@ -136,7 +136,7 @@ struct object_with_zone<MSGPACK_STD_TR1::unordered_multiset<T, Hash, Compare, Al
             o.via.array.size = 0;
         } else {
             uint32_t size = checked_get_container_size(v.size());
-            msgpack::object* p = static_cast<msgpack::object*>(o.zone.allocate_align(sizeof(msgpack::object)*size));
+            msgpack::object* p = static_cast<msgpack::object*>(o.zone.allocate_align(sizeof(msgpack::object)*size, MSGPACK_ZONE_ALIGNOF(msgpack::object)));
             msgpack::object* const pend = p + size;
             o.via.array.ptr = p;
             o.via.array.size = size;
