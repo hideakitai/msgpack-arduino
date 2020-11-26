@@ -1,3 +1,7 @@
+# Archived Repository
+
+This library is deprecated. Please check [MsgPack](https://github.com/hideakitai/MsgPack) and [MsgPacketizer](https://github.com/hideakitai/MsgPacketizer).
+
 # msgpack-arduino
 [msgpack-c/c++](https://github.com/msgpack/msgpack-c) for arduino
 
